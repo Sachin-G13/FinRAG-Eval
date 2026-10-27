@@ -1,0 +1,10 @@
+langchain-groq
+langchain-chroma
+langchain-community
+langchain-core
+langchain-text-splitters
+langgraph
+fastembed
+pydantic
+python-dotenv
+pypdf
