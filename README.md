@@ -6,18 +6,20 @@ FinRAG-Eval is an agentic Corrective RAG (CRAG) system and evaluation framework 
 
 | Setup | Recall | False refusals | Latency |
 |---|---|---|---|
-| Plain k=3 | 14/28 | 14/28 | ~0.5x |
-| Plain k=6 | 18/28 | 9/28 | 1x |
-| Agentic (CRAG) | 17/28 | 9/28 | ~5x |
+| Plain k=3 | 14/28 | 14/28 | 7.3s (~0.5x) |
+| Plain k=6 | 18/28 | 9/28 | 13.6s (1x) |
+| Agentic (CRAG) | 17/28 | 9/28 | 64.7s (~5x) |
 
 - **Scaling top-k over agentic complexity**: Scaling retrieval from $k=3 \to 6$ cut false refusals significantly ($14/28 \to 9/28$) and improved recall ($14/28 \to 18/28$).
-- **Latency vs. Lift**: Plain $k=6$ matched agentic recall ($18/28$ vs $17/28$) at **~1/5th the latency** (13.6s vs 64.7s), while the agentic loop added negligible measured lift.
+- **Latency vs. Lift**: Plain $k=6$ matched agentic recall ($18/28$ vs $17/28$) at **~1/5th the latency** (13.6s vs 64.7s; Plain $k=3$ at 7.3s), while the agentic loop added negligible measured lift.
 
 ## Error analysis
 
 **12 of 13 misses: period mismatch / severed table chunks**
 
-Root-cause classification across the 13 retrieval misses attributed 12 failures to two core ingestion and embedding challenges:
+*(Note on the "13 misses": Plain $k=6$ had 10 retrieval misses and Agentic $k=6$ had 11 misses; the 13 audited cases represent the unique union of distinct queries that experienced retrieval misses across both $k=6$ configurations.)*
+
+Root-cause classification across these 13 retrieval misses attributed 12 failures to two core ingestion and embedding challenges:
 - **Severed Table Chunks (6/13 misses)**: Standard token-based text splitting broke multi-row financial tables mid-section (e.g., cutting off debt line items from liabilities or cash flow financing activities), preventing the LLM from synthesizing related figures.
 - **Semantic Period Mismatch (6/13 misses)**: Dense embeddings favored semantically similar multi-year summaries or alternate fiscal years (e.g., pulling FY23–FY25 annual balance sheets rather than Q2 2026 statements).
 - **Partial Header / Metadata Omission (1/13 misses)**: Cover page metadata (e.g., ticker symbol) was not co-located with notes chunks.
