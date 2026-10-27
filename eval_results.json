@@ -1,0 +1,298 @@
+{
+  "summary": {
+    "total_test_cases": 13,
+    "mean_retrieval_accuracy_pct": 53.85,
+    "faithfulness_groundedness_rate_pct": 69.23,
+    "hallucination_rate_pct": 30.77,
+    "average_query_latency_seconds": 59.49,
+    "timestamp": "2026-09-28 00:52:32"
+  },
+  "results": [
+    {
+      "id": "eval_factual_01",
+      "category": "factual_chunk_audit",
+      "is_unanswerable": false,
+      "question": "What is the par value per share of Apple Inc.'s common stock and its Nasdaq trading symbol as reported for the fiscal year ended September 27, 2025?",
+      "ground_truth": "Par value $0.00001 per share; trading symbol AAPL",
+      "rewritten_query": "Apple Inc. fiscal year ended September 27 2025 par value per share Nasdaq trading symbol",
+      "source_reference": "apple_2025_10k.pdf (Page 1) | Preview: \"UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-K (Mark One) ☒ ANNUAL REPORT PURSUANT TO...\"",
+      "agent_answer": "Par value per share of Apple Inc.’s common stock: **$0.00001**.  \nNasdaq trading symbol: **I don’t know** (the symbol is not provided in the context).",
+      "latency_seconds": 5.87,
+      "retrieval_relevance": 0,
+      "groundedness": 0,
+      "judge_reasoning": "The retrieved chunks contain the par value ($0.00001) but do not provide the Nasdaq trading symbol. The agent correctly reported the par value but admitted the symbol was unknown, which is incomplete for the question. Therefore retrieval relevance is 0 (missing key data) and groundedness is 0 (answer is not fully faithful to the required facts).",
+      "retrieved_chunks_preview": [
+        "$300\nSeptember \n2020\nSeptember \n2021\nSeptember \n2022\nSeptember \n2023\nSeptember \n2024\nSeptember \n2025\nApple Inc. $ 100 $ 132 $ 136 $ 155 $ 208 $ 234 \nS...",
+        "million and $538 million as of September 27, 2025 and September 28, 2024, respectively. Changes in the Company’s underlying \nforeign currency exposure...",
+        "Apple Inc.\nCONSOLIDATED STATEMENTS OF SHAREHOLDERS’ EQUITY\n(In millions, except per-share amounts)\nYears ended\nSeptember 27,\n2025\nSeptember 28,\n2024\nS...",
+        "2026 $ 12,393 \n2027  10,078 \n2028  9,300 \n2029  5,235 \n2030  4,972 \nThereafter  49,303 \nTotal term debt principal $ 91,281 \nAs of September 27, 2025 a...",
+        "Apple Inc.\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(In millions, except number of shares, which are reflected in thousands, and per-share amounts)\nYears...",
+        "DESCRIPTION OF THE REGISTRANT’S SECURITIES\nREGISTERED PURSUANT TO SECTION 12 OF THE\nSECURITIES EXCHANGE ACT OF 1934\nAs of September 27, 2025, Apple In..."
+      ]
+    },
+    {
+      "id": "eval_factual_02",
+      "category": "factual_chunk_audit",
+      "is_unanswerable": false,
+      "question": "For Apple Inc.'s Q1 2026 filing, what is the total amount of term debt classified as current liabilities, and how does it compare to the amount classified as non‑current term debt in the same period?",
+      "ground_truth": "Current term debt is $11,827 million, non‑current term debt is $76,685 million, and non‑current term debt exceeds current term debt by $64,858 million.",
+      "rewritten_query": "Apple Inc Q1 2026 term debt current liabilities term debt non‑current liabilities",
+      "source_reference": "apple_q1_2026.pdf (Page 2) | Preview: \"Current liabilities: Accounts payable $ 70,587 $ 69,860 Other current liabilities 68,543 66,387 Deferred revenue 9,413 9...\"",
+      "agent_answer": "**Apple Inc. – Q1 2026**\n\n| Item | Amount (in millions) |\n|------|----------------------|\n| Term debt classified as **current liabilities** | **$12,350** |\n| Term debt classified as **non‑current liabilities** | **$78,328** |\n\n**Comparison**\n\n- The non‑current term debt ($78,328 M) is far larger than the current term debt ($12,350 M).  \n- In absolute terms, the non‑current amount exceeds the current amount by **$65,978 M** (about 6.3 times the current figure).",
+      "latency_seconds": 48.29,
+      "retrieval_relevance": 0,
+      "groundedness": 0,
+      "judge_reasoning": "The retrieved chunks provide term debt figures for 2025 (12,350 current, 78,328 non‑current) but not for Q1 2026. The agent incorrectly used 2025 numbers, which do not match the ground‑truth 2026 figures (11,827 current, 76,685 non‑current). Therefore the answer is not grounded in the correct context, and the retrieval relevance for the requested period is also lacking.",
+      "retrieved_chunks_preview": [
+        "Commercial paper  7,979  9,967 \nTerm debt  12,350  10,912 \nTotal current liabilities  165,631  176,392 \nNon-current liabilities:\nTerm debt  78,328  85...",
+        "Other non-current liabilities  10,911  10,046 \nFinance leases Other current liabilities  538  144 \nOther non-current liabilities  692  752 \nTotal leas...",
+        "2026 $ 12,393 \n2027  10,078 \n2028  9,300 \n2029  5,235 \n2030  4,972 \nThereafter  49,303 \nTotal term debt principal $ 91,281 \nAs of September 27, 2025 a...",
+        "Apple Inc.\nCONSOLIDATED BALANCE SHEETS\n(In millions, except number of shares, which are reflected in thousands, and par value)\nSeptember 27,\n2025\nSept...",
+        "Apple Inc. \nCONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited) \n(In millions, except number of shares, which are reflected in thousands, and par value)...",
+        "Apple Inc. \nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Unaudited) \n(In millions) \n \n Six Months Ended \n March 28, 2026  March 29, 2025 \nCash, ca..."
+      ]
+    },
+    {
+      "id": "eval_factual_03",
+      "category": "factual_chunk_audit",
+      "is_unanswerable": false,
+      "question": "What was Apple’s total shareholders’ equity for Q2 2026 and how did it change compared to the same quarter in the prior year, both in absolute dollars and as a percentage?",
+      "ground_truth": "Apple’s total shareholders’ equity was $106,491 million in Q2 2026, an increase of $32,758 million over the prior year’s $73,733 million, representing approximately a 44.4% rise.",
+      "rewritten_query": "Apple Q2 2026 total shareholders' equity Q2 2025 change absolute dollars percentage",
+      "source_reference": "apple_q2_2026.pdf (Page 2) | Preview: \"LIABILITIES AND SHAREHOLDERS’ EQUITY: Current liabilities: Accounts payable $ 57,349 $ 69,860 Other current liabilities ...\"",
+      "agent_answer": "I’m sorry, but the information you’re asking for isn’t available in the context provided. The data includes Apple’s balance sheet as of March 28 2026 (Q1 2026) and September 27 2025 (Q4 2025), but it does not contain Apple’s total shareholders’ equity for Q2 2026 or the corresponding figure for Q2 2025. Therefore I cannot determine the absolute dollar change or the percentage change for that quarter.",
+      "latency_seconds": 65.73,
+      "retrieval_relevance": 0,
+      "groundedness": 1,
+      "judge_reasoning": "The retrieved chunks do not contain the Q2 2026 shareholders’ equity figure or the Q2 2025 figure, so the necessary data is missing. The agent correctly acknowledges this absence and does not fabricate any numbers, thus it is fully grounded.",
+      "retrieved_chunks_preview": [
+        "$300\nSeptember \n2020\nSeptember \n2021\nSeptember \n2022\nSeptember \n2023\nSeptember \n2024\nSeptember \n2025\nApple Inc. $ 100 $ 132 $ 136 $ 155 $ 208 $ 234 \nS...",
+        "2026 $ 12,393 \n2027  10,078 \n2028  9,300 \n2029  5,235 \n2030  4,972 \nThereafter  49,303 \nTotal term debt principal $ 91,281 \nAs of September 27, 2025 a...",
+        "Apple Inc.\nCONSOLIDATED STATEMENTS OF SHAREHOLDERS’ EQUITY\n(In millions, except per-share amounts)\nYears ended\nSeptember 27,\n2025\nSeptember 28,\n2024\nS...",
+        "million and $538 million as of September 27, 2025 and September 28, 2024, respectively. Changes in the Company’s underlying \nforeign currency exposure...",
+        "Common stock repurchased  (90,052)  (95,846)  (77,046) \nEnding balances  (14,264)  (19,154)  (214) \nAccumulated other comprehensive loss:\nBeginning ba...",
+        "Apple Inc. \nCONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited) \n(In millions, except number of shares, which are reflected in thousands, and par value)..."
+      ]
+    },
+    {
+      "id": "eval_factual_04",
+      "category": "factual_chunk_audit",
+      "is_unanswerable": false,
+      "question": "What was Apple Inc.'s total non‑current portion of term debt at September 27, 2025, and how much lower was it compared to the total non‑current portion of term debt at September 28, 2024?",
+      "ground_truth": "$78,328 million, which is $7,422 million lower than the $85,750 million reported on September 28, 2024.",
+      "rewritten_query": "Apple Inc. total non‑current portion of term debt September 27 2025 September 28 2024 difference",
+      "source_reference": "apple_2025_10k.pdf (Page 47) | Preview: \"Term Debt The Company has outstanding Notes, which are senior unsecured obligations with interest payable in arrears. Th...\"",
+      "agent_answer": "Apple Inc.’s total non‑current portion of term debt at September 27, 2025 was **$78,328 million**.  \nThis was **$7,422 million lower** than the non‑current term debt of **$85,750 million** reported at September 28, 2024.",
+      "latency_seconds": 52.83,
+      "retrieval_relevance": 1,
+      "groundedness": 1,
+      "judge_reasoning": "The retrieved chunks contain the exact figures for non‑current term debt (78,328 and 85,750) needed to answer the question. The agent’s answer matches the ground truth reference exactly, with no fabricated or incorrect information.",
+      "retrieved_chunks_preview": [
+        "Commercial paper  7,979  9,967 \nTerm debt  12,350  10,912 \nTotal current liabilities  165,631  176,392 \nNon-current liabilities:\nTerm debt  78,328  85...",
+        "for the credit carryforwards and a portion of other temporary differences.\nApple Inc. | 2025 Form 10-K | 41...",
+        "Apple Inc.\nCONSOLIDATED BALANCE SHEETS\n(In millions, except number of shares, which are reflected in thousands, and par value)\nSeptember 27,\n2025\nSept...",
+        "Apple Inc.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\n(In millions)\nYears ended\nSeptember 27,\n2025\nSeptember 28,\n2024\nSeptember 30,\n2023\nCash, cash equival...",
+        "Apple Inc.\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(In millions, except number of shares, which are reflected in thousands, and per-share amounts)\nYears...",
+        "Apple Inc.\nCONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME\n(In millions)\nYears ended\nSeptember 27,\n2025\nSeptember 28,\n2024\nSeptember 30,\n2023\nNet inco..."
+      ]
+    },
+    {
+      "id": "eval_factual_05",
+      "category": "factual_chunk_audit",
+      "is_unanswerable": false,
+      "question": "In Apple’s Q1 2026 cash flow statement, what is the combined cash outflow for repurchases of common stock, repayments of term debt, and repayments of commercial paper, and how does this combined outflow compare to the same combined outflow in the prior period?",
+      "ground_truth": "The combined cash outflow for repurchases of common stock, repayments of term debt, and repayments of commercial paper in Q1 2026 is $32,775 million, which is $216 million higher than the $32,559 million combined outflow in the prior period.",
+      "rewritten_query": "Apple Q1 2026 combined cash outflow repurchases of common stock repayments of term debt repayments of commercial paper prior period",
+      "source_reference": "apple_q1_2026.pdf (Page 3) | Preview: \"Cash generated by operating activities 53,925 29,935 Investing activities: Purchases of marketable securities (12,693) (...\"",
+      "agent_answer": "I’m sorry, but I don’t have that information.",
+      "latency_seconds": 62.86,
+      "retrieval_relevance": 0,
+      "groundedness": 1,
+      "judge_reasoning": "The retrieved chunks are from Apple’s 2025 Form 10‑K and do not contain the Q1 2026 cash flow figures needed to answer the question, so retrieval relevance is 0. The agent’s response correctly admits lack of information without fabricating data, so groundedness is 1.",
+      "retrieved_chunks_preview": [
+        "2026 $ 12,393 \n2027  10,078 \n2028  9,300 \n2029  5,235 \n2030  4,972 \nThereafter  49,303 \nTotal term debt principal $ 91,281 \nAs of September 27, 2025 a...",
+        "Common stock repurchased  (90,052)  (95,846)  (77,046) \nEnding balances  (14,264)  (19,154)  (214) \nAccumulated other comprehensive loss:\nBeginning ba...",
+        "respectively, with maturities generally less than nine months. The weighted-average interest rate of the Company’s commercial \npaper was 4.19% and 5.0...",
+        "Commercial paper  7,979  9,967 \nTerm debt  12,350  10,912 \nTotal current liabilities  165,631  176,392 \nNon-current liabilities:\nTerm debt  78,328  85...",
+        "Proceeds from/(Repayments of) commercial paper, net  (2,032)  3,960  (3,978) \nOther  (111)  (361)  (581) \nCash used in financing activities  (120,686)...",
+        "Apple Inc.\nCONSOLIDATED STATEMENTS OF SHAREHOLDERS’ EQUITY\n(In millions, except per-share amounts)\nYears ended\nSeptember 27,\n2025\nSeptember 28,\n2024\nS..."
+      ]
+    },
+    {
+      "id": "eval_factual_06",
+      "category": "factual_chunk_audit",
+      "is_unanswerable": false,
+      "question": "What were Tesla's GAAP operating income and non‑GAAP net income for the first quarter of 2026, expressed in billions of dollars?",
+      "ground_truth": "$0.9 billion GAAP operating income and $1.5 billion non‑GAAP net income",
+      "rewritten_query": "Tesla Q1 2026 GAAP operating income non‑GAAP net income",
+      "source_reference": "tesla_q1_2026-Update.pdf (Page 3) | Preview: \"S U M M A R YH I G H L I G H T S (1) Excludes SBC (stock-based compensation) & Digital assets gains and losses, net of t...\"",
+      "agent_answer": "I’m sorry, but I don’t have that information.",
+      "latency_seconds": 49.02,
+      "retrieval_relevance": 0,
+      "groundedness": 1,
+      "judge_reasoning": "The retrieved chunks do not contain the specific GAAP operating income or non‑GAAP net income figures for Tesla’s first quarter of 2026, so the retrieval is not relevant for answering the question. The agent correctly admits lack of information, which is a grounded response.",
+      "retrieved_chunks_preview": [
+        "S U M M A R YH I G H L I G H T S\n(1) Excludes SBC (stock-based compensation) & Digital assets gains and losses, net of tax; (2) Free cash flow = opera...",
+        "S U M M A R YH I G H L I G H T S\n(1) Excludes SBC (stock-based compensation) & Digital assets gains and losses, net of tax; (2) Free cash flow = opera...",
+        "A D D I T I O N A L  I N F O R M A T I O N\nWEBCAST INFORMATION\nTesla will provide a live webcast of its first quarter 2026 financial results conferenc...",
+        "A D D I T I O N A L  I N F O R M A T I O N\nWEBCAST INFORMATION\nTesla will provide a live webcast of its fourth quarter 2025 financial results conferen...",
+        "A D D I T I O N A L  I N F O R M A T I O N\nWEBCAST INFORMATION\nTesla will provide a live webcast of its third quarter 2025 financial results conferenc...",
+        "be read in conjunction with financial information reported under U.S. GAAP when understanding Tesla’s operating performance. A reconciliation between..."
+      ]
+    },
+    {
+      "id": "eval_factual_07",
+      "category": "factual_chunk_audit",
+      "is_unanswerable": false,
+      "question": "What adjustment was made to Tesla's Adjusted EBITDA (non‑GAAP) reporting starting in Q1 2025?",
+      "ground_truth": "Beginning in Q1 2025, Adjusted EBITDA (non‑GAAP) is presented net of digital assets gains and losses, and all prior periods have been adjusted.",
+      "rewritten_query": "Tesla Q1 2025 Adjusted EBITDA non‑GAAP adjustment",
+      "source_reference": "tesla_q3_2025-Update.pdf (Page 20) | Preview: \"Vehicle Deliveries (millions of units) K E Y M E T R I C S Q U A R T E R L Y (Unaudited) Operating Cash Flow ($B) Free C...\"",
+      "agent_answer": "Starting in Q1 2025, Tesla’s Adjusted EBITDA (non‑GAAP) was adjusted to **exclude stock‑based compensation (SBC) and digital‑asset gains and losses, net of tax**.",
+      "latency_seconds": 54.63,
+      "retrieval_relevance": 1,
+      "groundedness": 0,
+      "judge_reasoning": "The retrieved chunks contain the relevant information about the adjustment (exclusion of SBC and digital‑asset gains/losses, net of tax). However, the agent’s answer adds the exclusion of SBC and mentions net of tax, which are not part of the ground truth statement that only specifies net of digital‑asset gains/losses and adjustment of prior periods. Thus the answer is not fully faithful to the reference and is considered hallucinated.",
+      "retrieved_chunks_preview": [
+        "be read in conjunction with financial information reported under U.S. GAAP when understanding Tesla’s operating performance. A reconciliation between...",
+        "A D D I T I O N A L  I N F O R M A T I O N\nWEBCAST INFORMATION\nTesla will provide a live webcast of its first quarter 2026 financial results conferenc...",
+        "be read in conjunction with financial information reported under U.S. GAAP when understanding T esla’s operating performance. A reconciliation between...",
+        "A D D I T I O N A L  I N F O R M A T I O N\nWEBCAST INFORMATION\nTesla will provide a live webcast of its third quarter 2025 financial results conferenc...",
+        "A D D I T I O N A L  I N F O R M A T I O N\nWEBCAST INFORMATION\nTesla will provide a live webcast of its fourth quarter 2025 financial results conferen...",
+        "S U M M A R YH I G H L I G H T S\n(1) Excludes SBC (stock-based compensation) & Digital assets gains and losses, net of tax; (2) Free cash flow = opera..."
+      ]
+    },
+    {
+      "id": "eval_factual_08",
+      "category": "factual_chunk_audit",
+      "is_unanswerable": false,
+      "question": "When is Tesla's live webcast of its fourth quarter 2025 financial results conference call scheduled to begin, including date, time, and time zone?",
+      "ground_truth": "It is scheduled to begin at 4:30 p.m. Central Time (CT) on January 28, 2026.",
+      "rewritten_query": "Tesla Q4 2025 webcast conference call date time time zone",
+      "source_reference": "tesla_q4_2025-Update.pdf (Page 34) | Preview: \"A D D I T I O N A L I N F O R M A T I O N WEBCAST INFORMATION Tesla will provide a live webcast of its fourth quarter 20...\"",
+      "agent_answer": "Tesla’s live webcast is scheduled to begin on **January 28, 2026 at 4:30 p.m. Central Time (CT)**.",
+      "latency_seconds": 43.75,
+      "retrieval_relevance": 1,
+      "groundedness": 1,
+      "judge_reasoning": "The retrieved chunk contains the exact date, time, and time zone for the Q4 2025 webcast, matching the ground truth. The agent’s answer reproduces this information accurately without adding or omitting details.",
+      "retrieved_chunks_preview": [
+        "A D D I T I O N A L  I N F O R M A T I O N\nWEBCAST INFORMATION\nTesla will provide a live webcast of its fourth quarter 2025 financial results conferen...",
+        "A D D I T I O N A L  I N F O R M A T I O N\nWEBCAST INFORMATION\nTesla will provide a live webcast of its third quarter 2025 financial results conferenc...",
+        "A D D I T I O N A L  I N F O R M A T I O N\nWEBCAST INFORMATION\nTesla will provide a live webcast of its first quarter 2026 financial results conferenc...",
+        "Tesla locations 644 963 1,208 1,359 1,553 14%\nSupercharger stations 3,476 4,678 5,952 6,975 8,182 17%\nSupercharger connectors 31,498 42,419 54,892 65,...",
+        "Q4-2024 Q1-2025 Q2-2025 Q3-2025 Q4-2025 YoY\nModel 3/Y production 436,718 345,454 396,835 435,826 422,652 -3%\nOther models production 22,727 17,161 13,...",
+        "Q3-2024 Q4-2024 Q1-2025 Q2-2025 Q3-2025 YoY\nModel 3/Y production 443,668 436,718 345,454 396,835 435,826 -2%\nOther models production 26,128 22,727 17,..."
+      ]
+    },
+    {
+      "id": "eval_factual_09",
+      "category": "factual_chunk_audit",
+      "is_unanswerable": false,
+      "question": "In Q1 2026, how many additional U.S. metros did Tesla launch unsupervised Robotaxi rides in, and which cities were they?",
+      "ground_truth": "Three metros: Austin (expanded unsupervised operation area), Dallas (launched unsupervised rides), and Houston (launched unsupervised rides).",
+      "rewritten_query": "Tesla Q1 2026 unsupervised Robotaxi rides additional U.S. metros cities",
+      "source_reference": "tesla_q1_2026-Update.pdf (Page 9) | Preview: \"the fleet over time. We continued laying the groundwork for expansion of our Robotaxi service to additional major U.S. m...\"",
+      "agent_answer": "In Q1 2026 Tesla launched unsupervised Robotaxi rides in **two additional U.S. metros**: **Dallas** and **Houston**.",
+      "latency_seconds": 87.55,
+      "retrieval_relevance": 1,
+      "groundedness": 0,
+      "judge_reasoning": "The retrieved chunks contain all three metros (Austin, Dallas, Houston). The answer correctly lists Dallas and Houston but omits Austin, which is part of the ground truth. Therefore the answer is not fully faithful to the context.",
+      "retrieved_chunks_preview": [
+        "S E R V I C E S\nPlanned Robotaxi Coverage\nCumulative Paid Robotaxi Miles\n11\nState Metro Status\nCalifornia SF Bay Area Safety Driver\nTexas Austin Rampi...",
+        "S E R V I C E S\nAnnounced Near-Term Planned Robotaxi Coverage\nCumulative Paid Robotaxi Miles\n9\nState Metro Status\nCalifornia SF Bay Area Safety Driver...",
+        "Tesla AI training capacity ramp through end of September (H100 equivalent GPUs)\nC O R E   T E C H N O L O G Y\nCumulative miles driven with FSD (Superv...",
+        "the fleet over time. We continued laying the groundwork for expansion of our Robotaxi service to \nadditional major U.S. metros, including testing and...",
+        "additional vector of supply to help navigate increasingly complex supply chain challenges caused \nby trade barriers and tariff risks. We now produce d...",
+        "While we aim to leverage as much of our existing investments as possible, we continue to build \nout our supporting infrastructure for our vehicle and..."
+      ]
+    },
+    {
+      "id": "eval_factual_10",
+      "category": "factual_chunk_audit",
+      "is_unanswerable": false,
+      "question": "What was Tesla's Adjusted EBITDA (non‑GAAP) for Q3 2024, and how much higher was it than Tesla's Adjusted EBITDA (non‑GAAP) for Q3 2023?",
+      "ground_truth": "Tesla's Adjusted EBITDA (non‑GAAP) for Q3 2024 was $15,213 million, which is $444 million higher than the $14,769 million reported for Q3 2023.",
+      "rewritten_query": "Tesla Q3 2024 Adjusted EBITDA (non‑GAAP) Tesla Q3 2023 Adjusted EBITDA (non‑GAAP) difference",
+      "source_reference": "tesla_q3_2025-Update.pdf (Page 27) | Preview: \"Interest expense – TTM 191 159 143 128 156 203 261 315 350 365 365 349 Provision for (benefit from) income taxes – TTM (...\"",
+      "agent_answer": "I’m sorry, but the context provided does not include Tesla’s Adjusted EBITDA (non‑GAAP) figures for Q3 2024 or Q3 2023, so I don’t have the information needed to answer that question.",
+      "latency_seconds": 57.59,
+      "retrieval_relevance": 0,
+      "groundedness": 1,
+      "judge_reasoning": "The retrieved chunks do not contain the specific Adjusted EBITDA figures for Q3 2024 or Q3 2023, so the answer cannot be derived from the provided context. The agent correctly acknowledges the lack of information, which is a grounded response. Therefore, retrieval relevance is 0 and groundedness is 1.",
+      "retrieved_chunks_preview": [
+        "be read in conjunction with financial information reported under U.S. GAAP when understanding Tesla’s operating performance. A reconciliation between...",
+        "A D D I T I O N A L  I N F O R M A T I O N\nWEBCAST INFORMATION\nTesla will provide a live webcast of its third quarter 2025 financial results conferenc...",
+        "be read in conjunction with financial information reported under U.S. GAAP when understanding T esla’s operating performance. A reconciliation between...",
+        "financial information reported under U.S. GAAP when understanding Tesla’s operating performance. A reconciliation between GAAP and non-GAAP financial...",
+        "Adjusted EBITDA margin, non-GAAP automotive gross margin and free cash flow. These non-GAAP financial measures also facilitate management’s internal c...",
+        "A D D I T I O N A L  I N F O R M A T I O N\nWEBCAST INFORMATION\nTesla will provide a live webcast of its first quarter 2026 financial results conferenc..."
+      ]
+    },
+    {
+      "id": "eval_tricky_01",
+      "category": "hallucination_resistance_forecast",
+      "is_unanswerable": true,
+      "question": "What is Apple's official projected net sales forecast and operating margin guidance for the full fiscal year 2028?",
+      "ground_truth": "The provided SEC filings do not contain full-year 2028 net sales forecasts or operating margin guidance, as Apple does not publish multi-year forward-looking financial projections in its historical 10-K or quarterly reports.",
+      "rewritten_query": "Apple full fiscal year 2028 net sales forecast operating margin guidance",
+      "source_reference": "Tricky/Hallucination Test: Forward-looking multi-year forecast (unanswerable from historical filings)",
+      "agent_answer": "I’m sorry, but the information you’re asking for isn’t included in the context provided. I don’t have Apple’s official projected net sales forecast or operating margin guidance for fiscal year 2028.",
+      "latency_seconds": 75.25,
+      "retrieval_relevance": 1,
+      "groundedness": 1,
+      "judge_reasoning": "The retrieved chunks are Apple SEC filings (10‑K and quarterly reports) and therefore relevant to the requested entity, even though they do not contain a 2028 forecast. The agent correctly admits the absence of the requested information and does not fabricate any figures, so it is fully grounded.",
+      "retrieved_chunks_preview": [
+        "Percentage of total net sales  7%  7%  7% \nTotal operating expenses $ 62,151  8 % $ 57,467  5 % $ 54,847 \nPercentage of total net sales  15%  15%  14%...",
+        "Apple Inc.\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(In millions, except number of shares, which are reflected in thousands, and per-share amounts)\nYears...",
+        "Apple Inc. \nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited) \n(In millions, except number of shares, which are reflected in thousands, and...",
+        "First Quarter 2025:\n• MacBook Pro\n• Mac mini\n• iMac\n• iPad mini\nSecond Quarter 2025:\n• iPhone 16e\n• iPad Air\n• iPad\n• MacBook Air\n• Mac Studio\nThird Q...",
+        "Apple Inc. \nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited) \n(In millions, except number of shares, which are reflected in thousands, and...",
+        "Products and Services Performance\nThe following table shows net sales by category for 2025, 2024 and 2023 (dollars in millions):\n2025 Change 2024 Chan..."
+      ]
+    },
+    {
+      "id": "eval_tricky_02",
+      "category": "hallucination_resistance_nonexistent_metric",
+      "is_unanswerable": true,
+      "question": "How many Tesla Semi commercial trucks were delivered to PepsiCo specifically in Q3 2023 according to Tesla's Shareholder Updates?",
+      "ground_truth": "The provided filings do not disclose customer-specific vehicle delivery numbers (such as commercial delivery counts broken down specifically for PepsiCo in Q3 2023).",
+      "rewritten_query": "Tesla PepsiCo Q3 2023 Tesla Semi commercial trucks delivered",
+      "source_reference": "Tricky/Hallucination Test: Nonexistent granular customer delivery count (unanswerable from filings)",
+      "agent_answer": "I don’t know.",
+      "latency_seconds": 65.89,
+      "retrieval_relevance": 1,
+      "groundedness": 1,
+      "judge_reasoning": "The retrieved chunks are Tesla shareholder update documents, which are relevant filings for the entity in question, even though they do not contain the specific customer‑level data requested. The answer correctly admits lack of information, matching the ground truth that no such data is disclosed.",
+      "retrieved_chunks_preview": [
+        "Q3-2024 Q4-2024 Q1-2025 Q2-2025 Q3-2025 YoY\nModel 3/Y production 443,668 436,718 345,454 396,835 435,826 -2%\nOther models production 26,128 22,727 17,...",
+        "Q4-2024 Q1-2025 Q2-2025 Q3-2025 Q4-2025 YoY\nModel 3/Y production 436,718 345,454 396,835 435,826 422,652 -3%\nOther models production 22,727 17,161 13,...",
+        "2021 2022 2023 2024 2025 YoY\nModel 3/Y production 906,032 1,298,434 1,775,159 1,679,338 1,600,767 -5%\nOther models production 24,390 71,177 70,826 94,...",
+        "S U M M A R YH I G H L I G H T S\n(1) Excludes SBC (stock-based compensation) & Digital assets gains and losses, net of tax; (2) Free cash flow = opera...",
+        "Q1-2025 Q2-2025 Q3-2025 Q4-2025 Q1-2026 YoY\nModel 3/Y production 345,454 396,835 435,826 422,652 394,611 14%\nOther models production 17,161 13,409 11,...",
+        "continued growth in demand for our vehicles in markets in APAC and South America, while also \nseeing a rebound of demand in both EMEA and North Americ..."
+      ]
+    },
+    {
+      "id": "eval_tricky_03",
+      "category": "hallucination_resistance_fictitious_product",
+      "is_unanswerable": true,
+      "question": "What was the total hardware revenue generated by Apple's autonomous electric vehicle ('Project Titan' / 'Apple Car') in fiscal year 2025?",
+      "ground_truth": "Apple never launched an autonomous electric vehicle commercially, and no revenue figures for an 'Apple Car' or 'Project Titan' exist in Apple's fiscal year 2025 financial reports.",
+      "rewritten_query": "Apple Project Titan hardware revenue 2025",
+      "source_reference": "Tricky/Hallucination Test: Speculative/fictitious product hardware revenue (unanswerable)",
+      "agent_answer": "I don’t know.",
+      "latency_seconds": 104.08,
+      "retrieval_relevance": 1,
+      "groundedness": 1,
+      "judge_reasoning": "The retrieved chunks are Apple 2025 filings, which are relevant to the entity, even though they lack any mention of an Apple Car. The query is unanswerable, and the agent correctly admits it does not know, so both scores are 1.",
+      "retrieved_chunks_preview": [
+        "Products and Services Performance\nThe following table shows net sales by category for 2025, 2024 and 2023 (dollars in millions):\n2025 Change 2024 Chan...",
+        "Percentage of total net sales  7%  7%  7% \nTotal operating expenses $ 62,151  8 % $ 57,467  5 % $ 54,847 \nPercentage of total net sales  15%  15%  14%...",
+        "First Quarter 2025:\n• MacBook Pro\n• Mac mini\n• iMac\n• iPad mini\nSecond Quarter 2025:\n• iPhone 16e\n• iPad Air\n• iPad\n• MacBook Air\n• Mac Studio\nThird Q...",
+        "Apple Inc.\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(In millions, except number of shares, which are reflected in thousands, and per-share amounts)\nYears...",
+        "Apple Inc. \nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited) \n(In millions, except number of shares, which are reflected in thousands, and...",
+        "Apple Inc. \nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited) \n(In millions, except number of shares, which are reflected in thousands, and..."
+      ]
+    }
+  ]
+}
